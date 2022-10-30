@@ -1,0 +1,18 @@
+////2、用scanf函数输入一个年份year，计算这一年2月份的天数days，然后用输出函数printf输出days。
+#dinclude<stdio.h>
+int main() {//闰年要满足的条件————二月29天
+	//year%4==0&&year%100！=0||year%400==0
+	printf("请输入一个年份:>\n");
+int year = 0;
+	scanf("%d", &year);
+	if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+	{
+
+		printf("%d这一年的二月份天数为29天\n",year);
+	}
+	else
+	{
+		printf("%d这一年的二月份天数为28天\n",year);
+	}
+	return 0;
+}
