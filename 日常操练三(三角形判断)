@@ -1,0 +1,85 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+
+////3、编写程序，输入三角形三边 a、b、c，判断a、b、c能否构成三角形，
+////若不能则输出相应的信息，若能则判断组成的是等腰、等边、直角还是一般三角形。
+void decide(int a, int b, int c)
+{
+	if (a + b > c && a - b < c)
+	{
+
+		if (a == b || a == c || b == a)
+		{
+			if (a == b && b == c)
+			{
+				printf("等边三角形\n");
+			}
+			else if (judge(a, b, c))
+			{
+				printf("等腰直角三角\n");
+			}
+			else
+			printf("等腰角形\n");
+		}
+		else if (judge(a, b, c))
+		{
+			printf("直角三角形\n");
+		}
+		else
+		{
+			printf("一般三角形\n");
+		}
+	}
+	else
+		printf("不构成三角形\n");
+
+}
+void arrange(int* a, int* b, int* c)
+{
+
+
+	if (*a < *b)
+	{
+
+		*a = *a ^ *b;
+		*b = *a ^ *b;
+		*a = *a ^ *b;
+	}
+	if (*a < *c)
+	{
+		*a = *a ^ *c;
+		*c = *a ^ *c;
+		*a = *a ^ *c;
+	}
+
+
+}
+
+int judge(int a, int b, int c)
+{
+
+	arrange(&a, &b, &c);
+	if (a * a == b * b + c * c)
+	{
+		return 1;
+	}
+	else
+		return 0;
+}
+int main() {
+	printf("请输入三角形的三个边长:>\n");
+	int a, b, c;
+	while (1) {
+		scanf("%d%d%d", &a, &b, &c);
+		if (a <= 0 || b <= 0 || c <= 0)
+		{
+			printf("输入错误，边长必须大于零，请重新输入:>\n");
+		}
+		else {
+			decide(a, b, c);
+			break;
+		}
+			
+	}
+	return 0;
+}
