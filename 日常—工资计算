@@ -1,0 +1,293 @@
+#include<stdio.h>
+#include <math.h>
+//////4、编写程序，输入月薪数a，计算并输出税率、应缴税款和实得奖金数
+//////工薪所得扣除标准提高到3500元。要求计算下列表格中空白项。
+int main() {
+
+	float a = 0;
+	scanf("%f", &a);
+	if (a - 3500 < 0)
+	{//一级
+		float rate = 0;
+		float beyond = 0;
+		float give = beyond * rate;
+		float final = a;
+		printf("超出金额:%f\n", beyond);
+		printf("纳税金额%f\n", give);
+		printf("实得金额%f元\n", final);
+
+		printf("%f\n", final);
+	}
+	else if (a - 3500 >= 0)//二级之上
+	{//一级打印
+		printf("3500以内\n");
+		printf("超出金额:%d\n", 0);
+		printf("纳税金额%d\n", 0);
+		printf("实得金额%d元\n", 3500);
+		float total = 3500;
+		printf("%f\n", total);
+
+		if (a > 5000)
+		{//二级打印
+			float rate = 0.03;
+			float beyond = 5000 - 3500;
+			float give = beyond * rate;
+			float final = beyond - give;
+			printf("3500到5000以内\n");
+			printf("超出金额:%f\n", beyond);
+			printf("纳税金额%f\n", give);
+			printf("实得金额%f元\n", final);
+			float total = final + 3500;
+			printf("%f\n", total);
+			if (a > 8000)
+			{//三级打印
+				float rate = 0.1;
+				float beyond = 8000 - 5000;
+				float give = beyond * rate;
+				float final = beyond - give;
+				printf("3500到5000以内\n");
+				printf("超出金额:%f\n", beyond);
+				printf("纳税金额%f\n", give);
+				printf("实得金额%f元\n", final);
+				float total = final + 3500 + (5000 - 3500) * (1 - 0.03);
+				printf("%f\n", total);
+
+				if (a > 12500)
+				{//四级打印
+					float rate = 0.2;
+					float beyond = 12500 - 8000;
+					float give = beyond * rate;
+					float final = beyond - give;
+					printf("3500到5000以内\n");
+					printf("超出金额:%f\n", beyond);
+					printf("纳税金额%f\n", give);
+					printf("实得金额%f元\n", final);
+					float total = final + 3500 + (5000 - 3500) * (1 - 0.03) + (5000 - 8000) * (1 - 0.1);
+					printf("%f\n", total);
+					if (a > 38500)
+					{
+						//五级打印
+						float rate = 0.25;
+						float beyond = 38500 - 12500;
+						float give = beyond * rate;
+						float final = beyond - give;
+						printf("3500到5000以内\n");
+						printf("超出金额:%f\n", beyond);
+						printf("纳税金额%f\n", give);
+						printf("实得金额%f元\n", final);
+						float total = final + 3500 + (5000 - 3500) * (1 - 0.03) + (5000 - 8000) * (1 - 0.1) + (8000 - 12500) * (1 - 0.2);
+						printf("%f\n", total);
+						if (a > 58500)
+						{//六级打印
+							float rate = 0.3;
+							float beyond = 58500 - 38500;
+							float give = beyond * rate;
+							float final = beyond - give;
+							printf("3500到5000以内\n");
+							printf("超出金额:%f\n", beyond);
+							printf("纳税金额%f\n", give);
+							printf("实得金额%f元\n", final);
+							float total = final + 3500 + (5000 - 3500) * (1 - 0.03) + (5000 - 8000) * (1 - 0.1) + (8000 - 12500) * (1 - 0.2) + (12500 - 38500) * (1 - 0.25);
+							printf("%f\n", total);
+
+							if (a > 83500)
+							{//七级打印
+								double rate = 0.35;
+								float beyond = 83500 - 58500;
+								float give = beyond * rate;
+								float final = beyond - give;
+								printf("58500-83500以内\n");
+								printf("超出金额:%f\n", beyond);
+								printf("纳税金额%f\n", give);
+								printf("实得金额%f元\n", final);
+								float total = final + 3500 + (5000 - 3500) * (1 - 0.03) + (5000 - 8000) * (1 - 0.1) + (8000 - 12500) * (1 - 0.2) + (12500 - 38500) * (1 - 0.25) + (38500 - 58500) * (1 - 0.3);
+								printf("%f\n", total);
+								//八级打印
+								float rate1 = 0.45;
+								float beyond1 = a - 83500;
+								float give1 = beyond1 * rate1;
+								float final6 = beyond1 - give1;
+								printf("83500之后\n");
+								printf("超出金额:%f\n", beyond1);
+								printf("纳税金额%f\n", give1);
+								printf("实得金额%f元\n", final6);
+								float total2 = final6 + 3500 + (5000 - 3500) * (1 - 0.03) + (5000 - 8000) * (1 - 0.1) + (8000 - 12500) * (1 - 0.2) + (12500 - 38500) * (1 - 0.25) + (38500 - 58500) * (1 - 0.3) + (58500 - 83500) * (1 - 0.35);
+								printf("%f\n", total2);
+							}
+							else//58500-83500
+							{
+								//								float rate = 0.35;
+								float beyond = a - 58500;
+								float give = beyond * rate;
+								float final = beyond - give;
+								printf("58500-83500以内\n");
+								printf("超出金额:%f\n", beyond);
+								printf("纳税金额%f\n", give);
+								printf("实得金额%f元\n", final);
+								float total = final + 3500 + (5000 - 3500) * (1 - 0.03) + (5000 - 8000) * (1 - 0.1) + (8000 - 12500) * (1 - 0.2) + (12500 - 38500) * (1 - 0.25) + (38500 - 58500) * (1 - 0.3);
+								printf("%f\n", total);
+							}
+													}
+						else//38500-58500
+						{
+							float rate = 0.3;
+							float beyond = a - 38500;
+							float give = beyond * rate;
+							float final = beyond - give;
+							printf("38500-58500以内\n");
+							printf("超出金额:%f\n", beyond);
+							printf("纳税金额%f\n", give);
+							printf("实得金额%f元\n", final);
+							float total = final + 3500 + (5000 - 3500) * (1 - 0.03) + (5000 - 8000) * (1 - 0.1) + (8000 - 12500) * (1 - 0.2) + (12500 - 38500) * (1 - 0.25);
+							printf("%f\n", total);
+						}
+
+						}
+						else//12500-38500
+						{
+
+							float rate = 0.25;
+							float beyond = a - 12500;
+							float give = beyond * rate;
+							float final = beyond - give;
+							printf("12500-38500以内\n");
+							printf("超出金额:%f\n", beyond);
+							printf("纳税金额%f\n", give);
+							printf("实得金额%f元\n", final);
+							float total = final + 3500 + (5000 - 3500) * (1 - 0.03) + (5000 - 8000) * (1 - 0.1) + (8000 - 12500) * (1 - 0.2);
+							printf("%f\n", total);
+						}
+					}
+					else//8000=12500
+					{
+						float rate = 0.2;
+						float beyond = a - 8000;
+						float give = beyond * rate;
+						float final = beyond - give;
+						printf("8000到12500以内\n");
+						printf("超出金额:%f\n", beyond);
+						printf("纳税金额%f\n", give);
+						printf("实得金额%f元\n", final);
+						float total = final + 3500 + (5000 - 3500) * (1 - 0.03) + (5000 - 8000) * (1 - 0.1);
+						printf("%f\n", total);
+					}
+
+				}
+				else//5000-8000
+				{
+					float rate = 0.1;
+					float beyond = a - 5000;
+					float give = beyond * rate;
+					float final = beyond - give;
+					float total = final + 3500 + (5000 - 3500) * (1 - 0.03);
+					printf("5000到8000以内\n");
+					printf("超出金额:%f\n", beyond);
+					printf("纳税金额%f\n", give);
+					printf("实得金额%f元\n", final);
+					printf("%f\n", total);
+				}
+			}
+			else
+			{//二级打印
+				float rate = 0.03;
+				float beyond = a - 3500;
+				float give = beyond * rate;
+				float final = beyond - give;
+				float total = final + 3500;
+				printf("3500到5000以内\n");
+				printf("超出金额:%f\n", beyond);
+				printf("纳税金额%f\n", give);
+				printf("实得金额%f元\n", final);
+				printf("%f\n", total);
+			}
+		}
+		return 0;
+	}
+
+	void f1(int a, int rate)
+	{
+
+		int beyond = 0;
+		int give = beyond * rate;
+		int final = a;
+		printf("超出金额:>%d\n", beyond);
+		printf("纳税金额%d\n", give);
+		printf("实得金额%d\n", final);
+
+	}
+
+	void f2(int a, int rate, int limit)
+	{
+		/*int rate = 0;*/
+		int beyond = a - limit;
+		int give = beyond * rate;
+		int final = a - give;
+		printf("超出金额:>%d\n", beyond);
+		printf("纳税金额%d\n", give);
+		printf("实得金额%d\n", final);
+	}
+	int main() 
+	{
+		int beyond = 0;
+		int a = 0;
+		scanf("%d", &a);
+		if (a < 3500)
+		{
+			int rate = 0;
+			f1(a, rate);
+
+		}
+		else if (a > 3500 && a <= 5000)
+		{
+			int rate = 0.03;
+			int limit = 3500;
+			f1(a, rate, limit);
+
+		}
+		else if (a > 5000 && a < 8000)
+		{
+
+
+			int rate = 0.1;
+			int limit = 5000;
+			f1(a, rate, limit);
+		}
+		else if (a > 8000 && a <= 12500)
+		{
+			int rate = 0.1;
+			int limit = 5000;
+			f1(a, rate, limit);
+
+		}
+
+		else if (a > 12500 & a <= 38500)
+		{
+
+			int rate = 0.1;
+			int limit = 5000;
+			f1(a, rate, limit);
+		}
+
+		else if (a > 38500 && a <= 58500)
+		{
+			int rate = 0.1;
+			int limit = 5000;
+			f1(a, rate, limit);
+
+		}
+		else if (a > 5850 && a <= 83500)
+		{
+
+			int rate = 0.1;
+			int limit = 5000;
+			f1(a, rate, limit);
+		}
+		else if (a > 83500)
+		{
+			int rate = 0.1;
+			int limit = 83500;
+			f1(a, rate, limit);
+		}
+		printf("超出金额:>%d\n", beyond);
+		return 0;
+	}
