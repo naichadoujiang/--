@@ -1,0 +1,116 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<string.h>
+#include<windows.h>
+void compare(char* p1, char* p2, int* count1, int* count2,int n )
+{
+	for (int i = 0; i < 2 * n; i++)
+	{
+		//跳空格
+		if ((*p1 == *p1) && (*p1 == ' '))
+		{
+			p1++;
+			p2++;
+			continue;
+		}
+		//判断
+		//5赢
+		if (*p1 == '5' && *p2 == '0')
+		{
+			++*count1;
+			p1++;
+			p2++;
+			continue;
+		}
+		else if (*p2 == '5' && *p1 == '0')
+		{
+			++*count2;
+			p1++;
+			p2++;
+			continue;
+		}
+		//数字小的赢
+		if ((*(p1 )) < (*(p2 )))
+		{
+			++*count1;
+			}
+		else if ((*(p1 )) > (*(p2 )))
+		{
+			++*count2;
+		}
+		p1++;
+		p2++;
+	}
+}
+int main() {
+	int n = 10;
+	int NA = 3;
+	int NB = 4;
+	//int n, NA, NB;
+	scanf("%d %d %d", &n, &NA, &NB);
+	char arrA[50] = { 0 };
+	char arr2A[50] = { 0 };
+	char arrB[50] = { 0 };
+	char arr2B[50] = { 0 };
+	//记数
+	int countA = 0;
+	int countB = 0;
+	//获胜者
+	char winner;
+	while (getchar() != '\n')
+	{
+		;
+	}
+	//存放A 的出招
+	for (int i = 0; i < 2*NA; i++)
+	{
+
+		arrA[i] = getchar();
+		if (arrA[i] == '\0')
+		{
+			break;
+		}
+	}
+	strcpy(arr2A, arrA);
+	for (int i = 0; i < n / NA-1; i++)
+	{
+		strncat(arrA, arrA, strlen(arr2A));
+	}
+	int ret2= 2 * (n % NA);
+	strncat(arrA, arrA,ret2);
+	while (getchar() != '\n')
+	{
+		;
+	}
+	//B 的出招
+	for (int i = 0; i < 2 * NB; i++)
+	{
+		arrB[i] = getchar();
+		if (arrB[i] == '\0')
+		{
+			break;
+		}
+	}
+	strcpy(arr2B, arrB);
+	for (int i = 0; i < n / NB - 1; i++)
+	{
+		strncat(arrB, arrB, strlen(arr2B));
+	}
+	int ret4 = 2 * (n % NB);
+	strncat(arrB, arrB,ret4);
+ compare(arrA,arrB,&countA,&countB,n);
+ if (countA > countB)
+ {
+	 winner = 'A';
+ }
+ else if (countA < countB)
+ {
+	 winner = 'B';
+ }
+ else
+	 winner = 'i';
+ int ret = n - countA - countB;
+ printf("A赢了%d轮，B赢了%d轮，双方打平%d轮，所以%c获胜", countA, countB,ret, winner);
+ system("pause");
+	return 0;
+}
