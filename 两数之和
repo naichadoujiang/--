@@ -1,0 +1,41 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<string.h>
+int judst(int* nums, int target,int sz,int* n1,int* n2)
+{
+	for (int i = 0; i < sz; i++)
+	{
+		for (int j = i + 1; j < sz; j++)
+		{
+			if (nums[i] + nums[j] == target)
+			{
+				*n1 = i;
+				*n2 = j;
+				return 1;
+			}
+			
+		}
+	}
+	return 0;
+}
+int main() {
+	printf("请输入数组元素:>");
+	int nums[4] = { 0 };
+	int target = 0;
+	int output1, output2;
+	int sz = sizeof(nums) / sizeof(nums[0]);
+	for (int i = 0; i < sz; i++)
+	{
+		scanf("%d", &nums[i]);
+	}
+	printf("请输入target值:>\n");
+	scanf("%d", &target);
+	int ret=judst(nums, target,sz,&output1,&output2);
+	if (ret == 0)
+	{
+		printf("查找失败\n");
+	}
+	else
+	printf("[%d,%d]", output1, output2);
+	return 0;
+}
